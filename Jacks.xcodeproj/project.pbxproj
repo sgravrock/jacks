@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AAD54F081A4A4DFA002E9443 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F071A4A4DFA002E9443 /* AppDelegate.swift */; };
+		AAD54F0A1A4A4DFA002E9443 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F091A4A4DFA002E9443 /* ViewController.swift */; };
+		AAD54F0D1A4A4DFA002E9443 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD54F0B1A4A4DFA002E9443 /* Main.storyboard */; };
+		AAD54F0F1A4A4DFA002E9443 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD54F0E1A4A4DFA002E9443 /* Images.xcassets */; };
+		AAD54F121A4A4DFA002E9443 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD54F101A4A4DFA002E9443 /* LaunchScreen.xib */; };
+		AAD54F1E1A4A4DFA002E9443 /* JacksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F1D1A4A4DFA002E9443 /* JacksTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AAD54F181A4A4DFA002E9443 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AAD54EFA1A4A4DFA002E9443 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAD54F011A4A4DFA002E9443;
+			remoteInfo = Jacks;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AAD54F021A4A4DFA002E9443 /* Jacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAD54F061A4A4DFA002E9443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAD54F071A4A4DFA002E9443 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AAD54F091A4A4DFA002E9443 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AAD54F0C1A4A4DFA002E9443 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AAD54F0E1A4A4DFA002E9443 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AAD54F111A4A4DFA002E9443 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		AAD54F171A4A4DFA002E9443 /* JacksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JacksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAD54F1C1A4A4DFA002E9443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAD54F1D1A4A4DFA002E9443 /* JacksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JacksTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AAD54EFF1A4A4DFA002E9443 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAD54F141A4A4DFA002E9443 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AAD54EF91A4A4DFA002E9443 = {
+			isa = PBXGroup;
+			children = (
+				AAD54F041A4A4DFA002E9443 /* Jacks */,
+				AAD54F1A1A4A4DFA002E9443 /* JacksTests */,
+				AAD54F031A4A4DFA002E9443 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AAD54F031A4A4DFA002E9443 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAD54F021A4A4DFA002E9443 /* Jacks.app */,
+				AAD54F171A4A4DFA002E9443 /* JacksTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AAD54F041A4A4DFA002E9443 /* Jacks */ = {
+			isa = PBXGroup;
+			children = (
+				AAD54F071A4A4DFA002E9443 /* AppDelegate.swift */,
+				AAD54F091A4A4DFA002E9443 /* ViewController.swift */,
+				AAD54F0B1A4A4DFA002E9443 /* Main.storyboard */,
+				AAD54F0E1A4A4DFA002E9443 /* Images.xcassets */,
+				AAD54F101A4A4DFA002E9443 /* LaunchScreen.xib */,
+				AAD54F051A4A4DFA002E9443 /* Supporting Files */,
+			);
+			path = Jacks;
+			sourceTree = "<group>";
+		};
+		AAD54F051A4A4DFA002E9443 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AAD54F061A4A4DFA002E9443 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AAD54F1A1A4A4DFA002E9443 /* JacksTests */ = {
+			isa = PBXGroup;
+			children = (
+				AAD54F1D1A4A4DFA002E9443 /* JacksTests.swift */,
+				AAD54F1B1A4A4DFA002E9443 /* Supporting Files */,
+			);
+			path = JacksTests;
+			sourceTree = "<group>";
+		};
+		AAD54F1B1A4A4DFA002E9443 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AAD54F1C1A4A4DFA002E9443 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AAD54F011A4A4DFA002E9443 /* Jacks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAD54F211A4A4DFA002E9443 /* Build configuration list for PBXNativeTarget "Jacks" */;
+			buildPhases = (
+				AAD54EFE1A4A4DFA002E9443 /* Sources */,
+				AAD54EFF1A4A4DFA002E9443 /* Frameworks */,
+				AAD54F001A4A4DFA002E9443 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Jacks;
+			productName = Jacks;
+			productReference = AAD54F021A4A4DFA002E9443 /* Jacks.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AAD54F161A4A4DFA002E9443 /* JacksTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAD54F241A4A4DFA002E9443 /* Build configuration list for PBXNativeTarget "JacksTests" */;
+			buildPhases = (
+				AAD54F131A4A4DFA002E9443 /* Sources */,
+				AAD54F141A4A4DFA002E9443 /* Frameworks */,
+				AAD54F151A4A4DFA002E9443 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AAD54F191A4A4DFA002E9443 /* PBXTargetDependency */,
+			);
+			name = JacksTests;
+			productName = JacksTests;
+			productReference = AAD54F171A4A4DFA002E9443 /* JacksTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AAD54EFA1A4A4DFA002E9443 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Steve Gravrock";
+				TargetAttributes = {
+					AAD54F011A4A4DFA002E9443 = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+					AAD54F161A4A4DFA002E9443 = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = AAD54F011A4A4DFA002E9443;
+					};
+				};
+			};
+			buildConfigurationList = AAD54EFD1A4A4DFA002E9443 /* Build configuration list for PBXProject "Jacks" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AAD54EF91A4A4DFA002E9443;
+			productRefGroup = AAD54F031A4A4DFA002E9443 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AAD54F011A4A4DFA002E9443 /* Jacks */,
+				AAD54F161A4A4DFA002E9443 /* JacksTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AAD54F001A4A4DFA002E9443 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAD54F0D1A4A4DFA002E9443 /* Main.storyboard in Resources */,
+				AAD54F121A4A4DFA002E9443 /* LaunchScreen.xib in Resources */,
+				AAD54F0F1A4A4DFA002E9443 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAD54F151A4A4DFA002E9443 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AAD54EFE1A4A4DFA002E9443 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAD54F0A1A4A4DFA002E9443 /* ViewController.swift in Sources */,
+				AAD54F081A4A4DFA002E9443 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAD54F131A4A4DFA002E9443 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAD54F1E1A4A4DFA002E9443 /* JacksTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AAD54F191A4A4DFA002E9443 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AAD54F011A4A4DFA002E9443 /* Jacks */;
+			targetProxy = AAD54F181A4A4DFA002E9443 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AAD54F0B1A4A4DFA002E9443 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAD54F0C1A4A4DFA002E9443 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AAD54F101A4A4DFA002E9443 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAD54F111A4A4DFA002E9443 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AAD54F1F1A4A4DFA002E9443 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AAD54F201A4A4DFA002E9443 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AAD54F221A4A4DFA002E9443 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Jacks/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AAD54F231A4A4DFA002E9443 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Jacks/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AAD54F251A4A4DFA002E9443 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = JacksTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jacks.app/Jacks";
+			};
+			name = Debug;
+		};
+		AAD54F261A4A4DFA002E9443 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = JacksTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jacks.app/Jacks";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AAD54EFD1A4A4DFA002E9443 /* Build configuration list for PBXProject "Jacks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAD54F1F1A4A4DFA002E9443 /* Debug */,
+				AAD54F201A4A4DFA002E9443 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAD54F211A4A4DFA002E9443 /* Build configuration list for PBXNativeTarget "Jacks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAD54F221A4A4DFA002E9443 /* Debug */,
+				AAD54F231A4A4DFA002E9443 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AAD54F241A4A4DFA002E9443 /* Build configuration list for PBXNativeTarget "JacksTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAD54F251A4A4DFA002E9443 /* Debug */,
+				AAD54F261A4A4DFA002E9443 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AAD54EFA1A4A4DFA002E9443 /* Project object */;
+}
