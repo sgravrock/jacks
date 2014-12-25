@@ -16,6 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
+		let deck = Deck()
+		deck.shuffle()
+		for c in deck.cards {
+			print(c.value)
+			println(c.suit)
+		}
+		println(deck.cards.count)
 		return true
 	}
 

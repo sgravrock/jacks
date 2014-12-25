@@ -13,6 +13,12 @@
 		AAD54F0F1A4A4DFA002E9443 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD54F0E1A4A4DFA002E9443 /* Images.xcassets */; };
 		AAD54F121A4A4DFA002E9443 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD54F101A4A4DFA002E9443 /* LaunchScreen.xib */; };
 		AAD54F1E1A4A4DFA002E9443 /* JacksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F1D1A4A4DFA002E9443 /* JacksTests.swift */; };
+		AAD54F281A4A506A002E9443 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F271A4A506A002E9443 /* Deck.swift */; };
+		AAD54F2A1A4A5112002E9443 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F291A4A5112002E9443 /* Card.swift */; };
+		AAD54F2C1A4A59D5002E9443 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F2B1A4A59D5002E9443 /* Game.swift */; };
+		AAD54F2E1A4A5F5C002E9443 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F2D1A4A5F5C002E9443 /* Player.swift */; };
+		AAD54F301A4A610B002E9443 /* ComputerPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F2F1A4A610B002E9443 /* ComputerPlayer.swift */; };
+		AAD54F321A4B160A002E9443 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F311A4B160A002E9443 /* Move.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,12 @@
 		AAD54F171A4A4DFA002E9443 /* JacksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JacksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD54F1C1A4A4DFA002E9443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAD54F1D1A4A4DFA002E9443 /* JacksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JacksTests.swift; sourceTree = "<group>"; };
+		AAD54F271A4A506A002E9443 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		AAD54F291A4A5112002E9443 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = ../Card.swift; sourceTree = "<group>"; };
+		AAD54F2B1A4A59D5002E9443 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		AAD54F2D1A4A5F5C002E9443 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		AAD54F2F1A4A610B002E9443 /* ComputerPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerPlayer.swift; sourceTree = "<group>"; };
+		AAD54F311A4B160A002E9443 /* Move.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +93,12 @@
 				AAD54F091A4A4DFA002E9443 /* ViewController.swift */,
 				AAD54F0B1A4A4DFA002E9443 /* Main.storyboard */,
 				AAD54F0E1A4A4DFA002E9443 /* Images.xcassets */,
+				AAD54F291A4A5112002E9443 /* Card.swift */,
+				AAD54F271A4A506A002E9443 /* Deck.swift */,
+				AAD54F2B1A4A59D5002E9443 /* Game.swift */,
+				AAD54F2D1A4A5F5C002E9443 /* Player.swift */,
+				AAD54F2F1A4A610B002E9443 /* ComputerPlayer.swift */,
+				AAD54F311A4B160A002E9443 /* Move.swift */,
 				AAD54F101A4A4DFA002E9443 /* LaunchScreen.xib */,
 				AAD54F051A4A4DFA002E9443 /* Supporting Files */,
 			);
@@ -212,8 +230,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD54F281A4A506A002E9443 /* Deck.swift in Sources */,
+				AAD54F2C1A4A59D5002E9443 /* Game.swift in Sources */,
 				AAD54F0A1A4A4DFA002E9443 /* ViewController.swift in Sources */,
 				AAD54F081A4A4DFA002E9443 /* AppDelegate.swift in Sources */,
+				AAD54F321A4B160A002E9443 /* Move.swift in Sources */,
+				AAD54F2E1A4A5F5C002E9443 /* Player.swift in Sources */,
+				AAD54F2A1A4A5112002E9443 /* Card.swift in Sources */,
+				AAD54F301A4A610B002E9443 /* ComputerPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
