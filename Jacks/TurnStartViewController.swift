@@ -82,7 +82,7 @@ class TurnStartViewController: UIViewController, GameDelegate {
 		topCardBtn.enabled = false
 		takeFromDiscardBtn.enabled = false
 		destWrapper.hidden = false
-		cardTakenLabel.text = "You took the \(cardTaken)."
+		cardTakenLabel.text = "You took the \(cardTaken!)."
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
