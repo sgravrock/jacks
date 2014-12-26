@@ -9,12 +9,19 @@
 /* Begin PBXBuildFile section */
 		AAA86F6C1A4BAD1C00B34424 /* GameStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA86F6B1A4BAD1C00B34424 /* GameStartViewController.swift */; };
 		AAA86F6E1A4DAF9800B34424 /* GameEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA86F6D1A4DAF9800B34424 /* GameEndViewController.swift */; };
+		AAA86F701A4DE09B00B34424 /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA86F6F1A4DE09B00B34424 /* GameTests.swift */; };
+		AAA86F711A4DE10000B34424 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F2B1A4A59D5002E9443 /* Game.swift */; };
+		AAA86F721A4DE17000B34424 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F291A4A5112002E9443 /* Card.swift */; };
+		AAA86F731A4DE17000B34424 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F271A4A506A002E9443 /* Deck.swift */; };
+		AAA86F741A4DE17000B34424 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F2D1A4A5F5C002E9443 /* Player.swift */; };
+		AAA86F751A4DE17000B34424 /* ComputerPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F2F1A4A610B002E9443 /* ComputerPlayer.swift */; };
+		AAA86F761A4DE17C00B34424 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F311A4B160A002E9443 /* Move.swift */; };
+		AAA86F7A1A4DE31900B34424 /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA86F791A4DE31900B34424 /* PlayerTests.swift */; };
 		AAD54F081A4A4DFA002E9443 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F071A4A4DFA002E9443 /* AppDelegate.swift */; };
 		AAD54F0A1A4A4DFA002E9443 /* TurnStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F091A4A4DFA002E9443 /* TurnStartViewController.swift */; };
 		AAD54F0D1A4A4DFA002E9443 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD54F0B1A4A4DFA002E9443 /* Main.storyboard */; };
 		AAD54F0F1A4A4DFA002E9443 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD54F0E1A4A4DFA002E9443 /* Images.xcassets */; };
 		AAD54F121A4A4DFA002E9443 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD54F101A4A4DFA002E9443 /* LaunchScreen.xib */; };
-		AAD54F1E1A4A4DFA002E9443 /* JacksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F1D1A4A4DFA002E9443 /* JacksTests.swift */; };
 		AAD54F281A4A506A002E9443 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F271A4A506A002E9443 /* Deck.swift */; };
 		AAD54F2A1A4A5112002E9443 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F291A4A5112002E9443 /* Card.swift */; };
 		AAD54F2C1A4A59D5002E9443 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F2B1A4A59D5002E9443 /* Game.swift */; };
@@ -36,6 +43,8 @@
 /* Begin PBXFileReference section */
 		AAA86F6B1A4BAD1C00B34424 /* GameStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStartViewController.swift; sourceTree = "<group>"; };
 		AAA86F6D1A4DAF9800B34424 /* GameEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEndViewController.swift; sourceTree = "<group>"; };
+		AAA86F6F1A4DE09B00B34424 /* GameTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
+		AAA86F791A4DE31900B34424 /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
 		AAD54F021A4A4DFA002E9443 /* Jacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD54F061A4A4DFA002E9443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAD54F071A4A4DFA002E9443 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,7 +54,6 @@
 		AAD54F111A4A4DFA002E9443 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		AAD54F171A4A4DFA002E9443 /* JacksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JacksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD54F1C1A4A4DFA002E9443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AAD54F1D1A4A4DFA002E9443 /* JacksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JacksTests.swift; sourceTree = "<group>"; };
 		AAD54F271A4A506A002E9443 /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		AAD54F291A4A5112002E9443 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = ../Card.swift; sourceTree = "<group>"; };
 		AAD54F2B1A4A59D5002E9443 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -122,8 +130,9 @@
 		AAD54F1A1A4A4DFA002E9443 /* JacksTests */ = {
 			isa = PBXGroup;
 			children = (
-				AAD54F1D1A4A4DFA002E9443 /* JacksTests.swift */,
 				AAD54F1B1A4A4DFA002E9443 /* Supporting Files */,
+				AAA86F6F1A4DE09B00B34424 /* GameTests.swift */,
+				AAA86F791A4DE31900B34424 /* PlayerTests.swift */,
 			);
 			path = JacksTests;
 			sourceTree = "<group>";
@@ -253,7 +262,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAD54F1E1A4A4DFA002E9443 /* JacksTests.swift in Sources */,
+				AAA86F761A4DE17C00B34424 /* Move.swift in Sources */,
+				AAA86F731A4DE17000B34424 /* Deck.swift in Sources */,
+				AAA86F701A4DE09B00B34424 /* GameTests.swift in Sources */,
+				AAA86F721A4DE17000B34424 /* Card.swift in Sources */,
+				AAA86F7A1A4DE31900B34424 /* PlayerTests.swift in Sources */,
+				AAA86F741A4DE17000B34424 /* Player.swift in Sources */,
+				AAA86F711A4DE10000B34424 /* Game.swift in Sources */,
+				AAA86F751A4DE17000B34424 /* ComputerPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

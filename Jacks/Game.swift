@@ -80,6 +80,7 @@ class Game: NSObject, ComputerPlayerDelegate {
 	
 	func winner() -> Player {
 		// precondition: game is finished
+		// TODO: Handle ties on points. Right now we choose an arbitrary winner in that case.
 		var result: Player? = nil
 		var minScore = Int.max
 		
