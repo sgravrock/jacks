@@ -6,7 +6,7 @@ class Deck: NSObject {
 	override init() {
 		for suit in [Suit.Clubs, Suit.Hearts, Suit.Spades, Suit.Diamonds] {
 			for value in 1...13 {
-				cards.append(Card(suit: suit, value: value))
+				cards.append(Card(suit: suit, value: CardValue.fromRaw(value)!))
 			}
 		}
 	}

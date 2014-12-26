@@ -1,11 +1,3 @@
-//
-//  Game.swift
-//  Jacks
-//
-//  Created by Steve Gravrock on 12/23/14.
-//  Copyright (c) 2014 Steve Gravrock. All rights reserved.
-//
-
 import UIKit
 
 protocol GameDelegate: ComputerPlayerDelegate {
@@ -16,14 +8,20 @@ class Game: NSObject, ComputerPlayerDelegate {
 	let players = [Player]()
 	let userPlayer = Player(name: "User")
 	weak var delegate: GameDelegate?
-	private let deck = Deck()
+	private var deck: Deck
 	private var discards = [Card]()
 	private var currentPlayerIx = 0
 	
-	override init() {
-		super.init()
+	override convenience init() {
+		let deck = Deck()
 		deck.shuffle()
-
+		self.init(deck:deck)
+	}
+	
+	init(deck: Deck) {
+		self.deck = deck
+		super.init()
+		
 		// Create the computer players
 		for i in 0...2 {
 			let p = ComputerPlayer(name: "Player \(i)")
@@ -41,6 +39,7 @@ class Game: NSObject, ComputerPlayerDelegate {
 		}
 		
 		discards.append(deck.pop())
+
 	}
 	
 	func discard(card: Card) {

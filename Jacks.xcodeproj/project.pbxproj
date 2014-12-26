@@ -17,6 +17,7 @@
 		AAA86F751A4DE17000B34424 /* ComputerPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F2F1A4A610B002E9443 /* ComputerPlayer.swift */; };
 		AAA86F761A4DE17C00B34424 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F311A4B160A002E9443 /* Move.swift */; };
 		AAA86F7A1A4DE31900B34424 /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA86F791A4DE31900B34424 /* PlayerTests.swift */; };
+		AAA86F7C1A4DF13F00B34424 /* ComputerPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA86F7B1A4DF13F00B34424 /* ComputerPlayerTests.swift */; };
 		AAD54F081A4A4DFA002E9443 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F071A4A4DFA002E9443 /* AppDelegate.swift */; };
 		AAD54F0A1A4A4DFA002E9443 /* TurnStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F091A4A4DFA002E9443 /* TurnStartViewController.swift */; };
 		AAD54F0D1A4A4DFA002E9443 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD54F0B1A4A4DFA002E9443 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		AAA86F6D1A4DAF9800B34424 /* GameEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEndViewController.swift; sourceTree = "<group>"; };
 		AAA86F6F1A4DE09B00B34424 /* GameTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
 		AAA86F791A4DE31900B34424 /* PlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerTests.swift; sourceTree = "<group>"; };
+		AAA86F7B1A4DF13F00B34424 /* ComputerPlayerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputerPlayerTests.swift; sourceTree = "<group>"; };
 		AAD54F021A4A4DFA002E9443 /* Jacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD54F061A4A4DFA002E9443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAD54F071A4A4DFA002E9443 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				AAD54F1B1A4A4DFA002E9443 /* Supporting Files */,
 				AAA86F6F1A4DE09B00B34424 /* GameTests.swift */,
 				AAA86F791A4DE31900B34424 /* PlayerTests.swift */,
+				AAA86F7B1A4DF13F00B34424 /* ComputerPlayerTests.swift */,
 			);
 			path = JacksTests;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAA86F7C1A4DF13F00B34424 /* ComputerPlayerTests.swift in Sources */,
 				AAA86F761A4DE17C00B34424 /* Move.swift in Sources */,
 				AAA86F731A4DE17000B34424 /* Deck.swift in Sources */,
 				AAA86F701A4DE09B00B34424 /* GameTests.swift in Sources */,

@@ -60,14 +60,12 @@ class TurnStartViewController: UIViewController, GameDelegate {
 	}
 	
 	@IBAction func destSelected(sender: UIButton) {
-		println("Hand before: \(game.userPlayer.hand)")
 		let i = find(destBtns, sender)!
 		let discard = game.userPlayer.hand[i]
 		game.userPlayer.hand[i] = cardTaken!
 		game.discard(discard)
 		log.text = "You took the \(cardTaken!)\nand discarded the \(discard)"
 		cardTaken = nil
-		println("Hand after: \(game.userPlayer.hand)")
 		playToNextUserTurn()
 	}
 	
