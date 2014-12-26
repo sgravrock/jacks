@@ -15,4 +15,14 @@ class Player : NSObject {
 	init(name: String) {
 		self.name = name
 	}
+	
+	func score() -> Int {
+		var result = 0
+		
+		for card in hand {
+			result += card.points()
+		}
+		
+		return result
+	}
 }

@@ -1,17 +1,13 @@
-//
-//  GameStartViewController.swift
-//  Jacks
-//
-//  Created by Steve Gravrock on 12/24/14.
-//  Copyright (c) 2014 Steve Gravrock. All rights reserved.
-//
-
 import UIKit
 
 class GameStartViewController: UIViewController {
+	// TODO: need support for save & resume
+	let game = Game()
+	@IBOutlet weak var cardsLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		cardsLabel.text = "1. \(game.userPlayer.hand[0])\n2. \(game.userPlayer.hand[1])\n???\n???"
 
         // Do any additional setup after loading the view.
     }
@@ -21,6 +17,8 @@ class GameStartViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+	@IBAction func begin() {
+	}
 
     /*
     // MARK: - Navigation

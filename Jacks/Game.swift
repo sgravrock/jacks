@@ -75,6 +75,27 @@ class Game: NSObject, ComputerPlayerDelegate {
 		}
 	}
 	
+	func isFinished() -> Bool {
+		return deck.empty()
+	}
+	
+	func winner() -> Player {
+		// precondition: game is finished
+		var result: Player? = nil
+		var minScore = Int.max
+		
+		for p in players {
+			let ps = p.score()
+			
+			if ps < minScore {
+				result = p
+				minScore = ps
+			}
+		}
+		
+		return result!
+	}
+	
 	func computerPlayer(computerPlayer: Player, didMove move: Move) {
 		delegate?.computerPlayer(computerPlayer, didMove: move)
 	}

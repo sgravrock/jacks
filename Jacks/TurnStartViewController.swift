@@ -1,27 +1,22 @@
-//
-//  ViewController.swift
-//  Jacks
-//
-//  Created by Steve Gravrock on 12/23/14.
-//  Copyright (c) 2014 Steve Gravrock. All rights reserved.
-//
-
 import UIKit
 
-class ViewController: UIViewController, GameDelegate {
+// TODO rename
+class TurnStartViewController: UIViewController, GameDelegate {
 	// TODO: need support for save & resume
 	let game = Game()
+	var cardTaken: Card?
 	
 	@IBOutlet weak var log: UILabel!
 	@IBOutlet weak var topCardBtn: UIButton!
-	@IBOutlet weak var discardBtn: UIButton!
+	@IBOutlet weak var takeFromDiscardBtn: UIButton!
+	@IBOutlet weak var destWrapper: UIView!
+	@IBOutlet weak var cardTakenLabel: UILabel!
 	@IBOutlet var destBtns: [UIButton]!
-	@IBOutlet weak var moveBtn: UIButton!
+	@IBOutlet weak var discardBtn: UIView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		log.text = ""
-		updateMoveButton()
 		game.delegate = self
 		playToNextUserTurn()
 		// Do any additional setup after loading the view, typically from a nib.
@@ -34,61 +29,65 @@ class ViewController: UIViewController, GameDelegate {
 	
 	func playToNextUserTurn() {
 		game.playToNextUserTurn()
-		discardBtn.setTitle("Top discard: \(game.topOfDiscards())", forState: UIControlState.Normal)
+		
+		if (game.isFinished()) {
+			performSegueWithIdentifier("segueToGameEnd", sender: self)
+//			var s = ""
+//			for p in game.players {
+//				s += "\(p.name) score: \(p.score())\n"
+//			}
+//			s += "\(game.winner()) wins"
+//			log.text = s
+//			destWrapper.hidden = true
+		} else {
+			takeFromDiscardBtn.setTitle("Top discard: \(game.topOfDiscards())", forState: UIControlState.Normal)
+			self.destWrapper.hidden = true
+			self.topCardBtn.enabled = true
+			self.takeFromDiscardBtn.enabled = true
+		}
 	}
 	
-	func updateMoveButton() {
-		var hasSource = false, hasDest = false
-		
-		for btn in [topCardBtn, discardBtn] {
-			if btn.selected {
-				hasSource = true
-			}
-		}
-		
-		for btn in destBtns {
-			if btn.selected {
-				hasDest = true
-			}
-		}
-		
-		moveBtn.enabled = hasSource && hasDest
+	@IBAction func takeFromDeckSelected(sender: AnyObject) {
+		cardTaken = game.takeTopOfDeck()
+		assert(cardTaken != nil, "game.takeTopOfDeck() didn't return a card")
+		cardWasTaken()
 	}
 	
-	func selectedDestIx() -> Int {
-		for var i = 0; i < destBtns.count; i++ {
-			if destBtns[i].selected {
-				return i
-			}
-		}
-		
-		return -1
-	}
-
-	@IBAction func sourceSelected(sender: UIButton) {
-		for btn in [topCardBtn, discardBtn] {
-			btn.selected = btn == sender
-		}
-		
-		updateMoveButton()
+	@IBAction func takeFromDiscardSelected(sender: AnyObject) {
+		cardTaken = game.takeTopOfDiscards()
+		assert(cardTaken != nil, "takeTopOfDiscards() didn't return a card")
+		cardWasTaken()
 	}
 	
 	@IBAction func destSelected(sender: UIButton) {
-		for btn in destBtns {
-			btn.selected = btn == sender
-		}
-		
-		updateMoveButton()
+		println("Player keeps and discards")
+		let i = find(destBtns, sender)!
+		let discard = game.userPlayer.hand[i]
+		game.userPlayer.hand[i] = cardTaken!
+		game.discard(discard)
+		log.text = "You took the \(cardTaken!)\nand discarded the \(discard)"
+		cardTaken = nil
+		playToNextUserTurn()
 	}
 	
-	@IBAction func performMove(sender: UIButton) {
-		let cardTaken = topCardBtn.selected ? game.takeTopOfDeck() : game.takeTopOfDiscards()
-		let i = selectedDestIx()
-		let discard = game.userPlayer.hand[i]
-		game.userPlayer.hand[i] = cardTaken
-		game.discard(discard)
-		log.text = "You took the \(cardTaken)\nand discarded the \(discard)"
+	@IBAction func discardCardTaken(sender: AnyObject) {
+		println("Player discards")
+		game.discard(cardTaken!)
+		log.text = "You took and discarded the \(cardTaken!)."
+		cardTaken = nil
 		playToNextUserTurn()
+	}
+	
+	func cardWasTaken() {
+		println("Player took card: \(cardTaken)")
+		topCardBtn.enabled = false
+		takeFromDiscardBtn.enabled = false
+		destWrapper.hidden = false
+		cardTakenLabel.text = "You took the \(cardTaken)."
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+		(segue.destinationViewController as GameEndViewController).game = game
 	}
 	
 	func computerPlayer(computerPlayer: Player, didMove move: Move) {

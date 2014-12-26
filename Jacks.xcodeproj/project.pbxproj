@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AAA86F6C1A4BAD1C00B34424 /* GameStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA86F6B1A4BAD1C00B34424 /* GameStartViewController.swift */; };
+		AAA86F6E1A4DAF9800B34424 /* GameEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA86F6D1A4DAF9800B34424 /* GameEndViewController.swift */; };
 		AAD54F081A4A4DFA002E9443 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F071A4A4DFA002E9443 /* AppDelegate.swift */; };
-		AAD54F0A1A4A4DFA002E9443 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F091A4A4DFA002E9443 /* ViewController.swift */; };
+		AAD54F0A1A4A4DFA002E9443 /* TurnStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD54F091A4A4DFA002E9443 /* TurnStartViewController.swift */; };
 		AAD54F0D1A4A4DFA002E9443 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD54F0B1A4A4DFA002E9443 /* Main.storyboard */; };
 		AAD54F0F1A4A4DFA002E9443 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD54F0E1A4A4DFA002E9443 /* Images.xcassets */; };
 		AAD54F121A4A4DFA002E9443 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAD54F101A4A4DFA002E9443 /* LaunchScreen.xib */; };
@@ -32,10 +34,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AAA86F6B1A4BAD1C00B34424 /* GameStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStartViewController.swift; sourceTree = "<group>"; };
+		AAA86F6D1A4DAF9800B34424 /* GameEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEndViewController.swift; sourceTree = "<group>"; };
 		AAD54F021A4A4DFA002E9443 /* Jacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD54F061A4A4DFA002E9443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAD54F071A4A4DFA002E9443 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AAD54F091A4A4DFA002E9443 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AAD54F091A4A4DFA002E9443 /* TurnStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnStartViewController.swift; sourceTree = "<group>"; };
 		AAD54F0C1A4A4DFA002E9443 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AAD54F0E1A4A4DFA002E9443 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AAD54F111A4A4DFA002E9443 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -90,7 +94,9 @@
 			isa = PBXGroup;
 			children = (
 				AAD54F071A4A4DFA002E9443 /* AppDelegate.swift */,
-				AAD54F091A4A4DFA002E9443 /* ViewController.swift */,
+				AAA86F6B1A4BAD1C00B34424 /* GameStartViewController.swift */,
+				AAD54F091A4A4DFA002E9443 /* TurnStartViewController.swift */,
+				AAA86F6D1A4DAF9800B34424 /* GameEndViewController.swift */,
 				AAD54F0B1A4A4DFA002E9443 /* Main.storyboard */,
 				AAD54F0E1A4A4DFA002E9443 /* Images.xcassets */,
 				AAD54F291A4A5112002E9443 /* Card.swift */,
@@ -232,10 +238,12 @@
 			files = (
 				AAD54F281A4A506A002E9443 /* Deck.swift in Sources */,
 				AAD54F2C1A4A59D5002E9443 /* Game.swift in Sources */,
-				AAD54F0A1A4A4DFA002E9443 /* ViewController.swift in Sources */,
+				AAD54F0A1A4A4DFA002E9443 /* TurnStartViewController.swift in Sources */,
 				AAD54F081A4A4DFA002E9443 /* AppDelegate.swift in Sources */,
 				AAD54F321A4B160A002E9443 /* Move.swift in Sources */,
 				AAD54F2E1A4A5F5C002E9443 /* Player.swift in Sources */,
+				AAA86F6E1A4DAF9800B34424 /* GameEndViewController.swift in Sources */,
+				AAA86F6C1A4BAD1C00B34424 /* GameStartViewController.swift in Sources */,
 				AAD54F2A1A4A5112002E9443 /* Card.swift in Sources */,
 				AAD54F301A4A610B002E9443 /* ComputerPlayer.swift in Sources */,
 			);
@@ -429,6 +437,7 @@
 				AAD54F231A4A4DFA002E9443 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AAD54F241A4A4DFA002E9443 /* Build configuration list for PBXNativeTarget "JacksTests" */ = {
 			isa = XCConfigurationList;
@@ -437,6 +446,7 @@
 				AAD54F261A4A4DFA002E9443 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
