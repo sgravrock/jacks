@@ -3,7 +3,7 @@ import UIKit
 // TODO rename
 class TurnStartViewController: UIViewController, GameDelegate {
 	// TODO: need support for save & resume
-	let game = Game()
+	var game: Game!
 	var cardTaken: Card?
 	
 	@IBOutlet weak var log: UILabel!
@@ -60,18 +60,18 @@ class TurnStartViewController: UIViewController, GameDelegate {
 	}
 	
 	@IBAction func destSelected(sender: UIButton) {
-		println("Player keeps and discards")
+		println("Hand before: \(game.userPlayer.hand)")
 		let i = find(destBtns, sender)!
 		let discard = game.userPlayer.hand[i]
 		game.userPlayer.hand[i] = cardTaken!
 		game.discard(discard)
 		log.text = "You took the \(cardTaken!)\nand discarded the \(discard)"
 		cardTaken = nil
+		println("Hand after: \(game.userPlayer.hand)")
 		playToNextUserTurn()
 	}
 	
 	@IBAction func discardCardTaken(sender: AnyObject) {
-		println("Player discards")
 		game.discard(cardTaken!)
 		log.text = "You took and discarded the \(cardTaken!)."
 		cardTaken = nil
@@ -79,7 +79,6 @@ class TurnStartViewController: UIViewController, GameDelegate {
 	}
 	
 	func cardWasTaken() {
-		println("Player took card: \(cardTaken)")
 		topCardBtn.enabled = false
 		takeFromDiscardBtn.enabled = false
 		destWrapper.hidden = false

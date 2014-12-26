@@ -18,11 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Override point for customization after application launch.
 		let deck = Deck()
 		deck.shuffle()
-		for c in deck.cards {
-			print(c.value)
-			println(c.suit)
-		}
-		println(deck.cards.count)
 		return true
 	}
 

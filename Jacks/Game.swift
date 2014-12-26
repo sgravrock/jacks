@@ -69,7 +69,6 @@ class Game: NSObject, ComputerPlayerDelegate {
 				break
 			}
 			
-			println("Taking a computer turn")
 			player.takeTurn(self)
 			currentPlayerIx = (currentPlayerIx + 1) % players.count
 		}
