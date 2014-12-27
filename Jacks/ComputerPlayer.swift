@@ -28,6 +28,7 @@ class ComputerPlayer: Player {
 			move = Move(cardTakenFromDiscard: takeFromDiscard ? newCard : nil,
 				cardDiscarded: hand[i])
 			hand[i] = newCard
+			cardsKnown[i] = true
 		} else {
 			move = Move(cardTakenFromDiscard: takeFromDiscard ? newCard : nil,
 				cardDiscarded: newCard)
