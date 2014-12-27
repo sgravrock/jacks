@@ -38,11 +38,14 @@ struct Card: Printable {
 	let value: CardValue
 	
 	func points() -> Int {
-		if value == CardValue.Jack {
+		switch (value) {
+		case CardValue.Jack:
 			return 0
+		case CardValue.Queen, CardValue.King:
+			return 10
+		default:
+			return value.toRaw()
 		}
-		
-		return value.toRaw()
 	}
 	
 	var description: String {

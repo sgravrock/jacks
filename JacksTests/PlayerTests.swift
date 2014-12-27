@@ -29,6 +29,6 @@ class PlayerTests: XCTestCase {
 		target.hand.append(Card(suit: Suit.Clubs, value: CardValue.Ten))
 		target.hand.append(Card(suit: Suit.Clubs, value: CardValue.Queen))
 		target.hand.append(Card(suit: Suit.Clubs, value: CardValue.King))
-		XCTAssertEqual(target.score(), 9 + 10 + 12 + 13, "Wrong score")
+		XCTAssertEqual(target.score(), 9 + 10 + 10 + 10, "Wrong score")
 	}
 }
