@@ -9,12 +9,21 @@ class ComputerPlayer: Player {
 	private var cardsKnown = [true, true, false, false]
 	private let replaceUnknownThreshold = 4
 	private let takeDiscardThreshold = 4
+	private let willLogStrategy = false
 	
 	func takeTurn(game: Game) {
+		logStrategy("Begin \(name) turn")
+		logStrategy("Initial hand: \(formatHandForLogging())")
 		let takeFromDiscard = game.topOfDiscards().points() <= takeDiscardThreshold
 		let newCard = takeFromDiscard ? game.takeTopOfDiscards() : game.takeTopOfDeck()
 		var move: Move
-		
+
+		if takeFromDiscard {
+			logStrategy("Taking top discard: \(newCard)")
+		} else {
+			logStrategy("Skipping top discard \(game.topOfDiscards()) and taking \(newCard) from deck")
+		}
+
 		if let i = indexOfChosenSlot(newCard) {
 			move = Move(cardTakenFromDiscard: takeFromDiscard ? newCard : nil,
 				cardDiscarded: hand[i])
@@ -25,6 +34,8 @@ class ComputerPlayer: Player {
 		}
 		
 		game.discard(move.cardDiscarded)
+		logStrategy("Final hand: \(formatHandForLogging())")
+		logStrategy("End \(name) turn")
 		delegate?.computerPlayer(self, didMove: move)
 	}
 	
@@ -33,8 +44,11 @@ class ComputerPlayer: Player {
 		// Otherwise replace the first known card that's worse than the new card.
 		if newCard.points() <= replaceUnknownThreshold {
 			if let i = indexOfFirstUnkown() {
+				logStrategy("Replacing unknown in slot \(i)")
 				return i
 			}
+			
+			logStrategy("Looked for an unknown slot but didn't find one")
 		}
 		
 		return indexOfFirstKnownWorseCard(newCard)
@@ -53,10 +67,33 @@ class ComputerPlayer: Player {
 	func indexOfFirstKnownWorseCard(newCard: Card) -> Int? {
 		for i in 0...cardsKnown.count - 1 {
 			if cardsKnown[i] && hand[i].points() > newCard.points() {
+				logStrategy("Replacing worse card in slot \(i): \(hand[i])")
 				return i
 			}
 		}
 		
+		logStrategy("Looked for a known worse card but didn't find one")
 		return nil
+	}
+	
+	func logStrategy(msg: String) {
+		if willLogStrategy {
+			println(msg)
+		}
+	}
+	
+	func formatHandForLogging() -> String {
+		var result = ""
+		
+		for i in 0..<hand.count {
+			let known = cardsKnown[i] ? "k" : "u"
+			result += "\(hand[i].value)(\(known))"
+			
+			if i < hand.count - 1 {
+				result += ", "
+			}
+		}
+		
+		return result
 	}
 }
