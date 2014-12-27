@@ -79,50 +79,22 @@ class Game: NSObject, ComputerPlayerDelegate {
 	
 	func winner() -> Player {
 		// precondition: game is finished
-		var candidates : [Player] = []
-		var minScore = Int.max
-		
-		for p in players {
-			let ps = p.score()
-			
-			if ps < minScore {
-				candidates = [p]
-				minScore = ps
-			} else if ps == minScore {
-				candidates.append(p)
-			}
-		}
+		let candidates = findByLowestScore(players, computeScore: {$0.score()})
 		
 		if candidates.count == 1 {
 			return candidates[0]
+		} else if let winner = breakTieByJackCount(candidates) {
+			return winner
 		} else {
-			return breakTie(candidates)
+			return breakTieByHighestJack(candidates)
 		}
 	}
 	
-	func breakTie(candidates: [Player]) -> Player {
-		if let winner = breakTieByJackCount(candidates) {
-			return winner
-		}
-		
-		return breakTieByHighestJack(candidates)
-	}
-
 	func breakTieByJackCount(candidates: [Player]) -> Player? {
-		var winners = [Player]()
-		var winnerJackCount = -1
-
-		for p in candidates {
-			let jacks = p.hand.filter({$0.value == CardValue.Jack})
-
-			if jacks.count > winnerJackCount {
-				winners = [p]
-				winnerJackCount = jacks.count
-			} else if jacks.count == winnerJackCount {
-				winners.append(p)
-			}
-		}
-
+		let winners = findByHighestScore(candidates, computeScore: { (p) -> Int in
+			p.hand.filter({$0.value == CardValue.Jack}).count
+		})
+		
 		if winners.count == 1 {
 			return winners[0]
 		} else {
@@ -132,31 +104,39 @@ class Game: NSObject, ComputerPlayerDelegate {
 	
 	func breakTieByHighestJack(candidates: [Player]) -> Player {
 		var suitsByRank = [Suit.Diamonds, Suit.Clubs, Suit.Hearts, Suit.Spades]
-		var winner: Player? = nil
-		var winnerScore = -1
-		
-		for p in candidates {
+		var ranked = findByHighestScore(candidates, computeScore: { (p) -> Int in
 			var score = -1
 			for c in p.hand {
 				if c.value == CardValue.Jack {
 					score = max(score, find(suitsByRank, c.suit)!)
 				}
 			}
+			return score
+		})
+		return ranked[0]
+	}
+	
+	// Returns the player(s) with the lowest score according to the supplied score function
+	func findByLowestScore(candidates: [Player], computeScore: (Player) -> Int) -> [Player] {
+		var winners = [Player]()
+		var lowestScore = Int.max
+		
+		for p in candidates {
+			let score = computeScore(p)
 			
-			if score > winnerScore {
-				winner = p
-				winnerScore = score
+			if score < lowestScore {
+				winners = [p]
+				lowestScore = score
+			} else if score == lowestScore {
+				winners.append(p)
 			}
 		}
 		
-		if let w = winner {
-			return w
-		} else {
-			// None of the candidates had any jacks.
-			// This is *exteremly* unlikely, but theoretically possible.
-			// Pick a winner arbitrarily.
-			return candidates[0]
-		}
+		return winners
+	}
+	
+	func findByHighestScore(candidates: [Player], computeScore: (Player) -> Int) -> [Player] {
+		return findByLowestScore(candidates, computeScore: {-1 * computeScore($0)})
 	}
 	
 	func computerPlayer(computerPlayer: Player, didMove move: Move) {
