@@ -19,7 +19,6 @@ class TurnStartViewController: UIViewController, GameDelegate {
 		log.text = ""
 		game.delegate = self
 		playToNextUserTurn()
-		// Do any additional setup after loading the view, typically from a nib.
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -32,13 +31,6 @@ class TurnStartViewController: UIViewController, GameDelegate {
 		
 		if (game.isFinished()) {
 			performSegueWithIdentifier("segueToGameEnd", sender: self)
-//			var s = ""
-//			for p in game.players {
-//				s += "\(p.name) score: \(p.score())\n"
-//			}
-//			s += "\(game.winner()) wins"
-//			log.text = s
-//			destWrapper.hidden = true
 		} else {
 			takeFromDiscardBtn.setTitle("Top discard: \(game.topOfDiscards())", forState: UIControlState.Normal)
 			self.destWrapper.hidden = true

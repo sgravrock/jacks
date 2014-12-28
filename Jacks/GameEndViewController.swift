@@ -3,8 +3,10 @@ import UIKit
 class GameEndViewController: UIViewController {
 	var game: Game!
 	@IBOutlet weak var winnerHeader: UILabel!
-	@IBOutlet weak var userInfo: UILabel!
-	@IBOutlet var computerPlayerInfos: [UILabel]!
+	@IBOutlet var computerPlayerHandViews: [HandView]!
+	@IBOutlet var computerPlayerHeaders: [UILabel]!
+	@IBOutlet weak var userHandView: HandView!
+	@IBOutlet weak var userHeader: UILabel!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -17,16 +19,20 @@ class GameEndViewController: UIViewController {
 		} else {
 			winnerHeader.text = "\(winner.name) won."
 		}
-
-		var computerPlayerIx = 0
+		
+		var i = 0
 		
 		for player in game.players {
 			if player === game.userPlayer {
-				userInfo.text = "You: \(describeHand(player))"
+				userHandView.showHand(player.hand)
+				userHeader.text = "You: \(player.score()) points"
 			} else {
-				computerPlayerInfos[computerPlayerIx++].text = "\(player.name): \(describeHand(player))"
+				computerPlayerHandViews[i].showHand(player.hand)
+				computerPlayerHeaders[i].text = "\(player.name): \(player.score()) points"
+				i++
 			}
 		}
+
 	}
 	
 	func describeHand(p: Player) -> String {

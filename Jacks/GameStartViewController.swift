@@ -3,11 +3,12 @@ import UIKit
 class GameStartViewController: UIViewController {
 	// TODO: need support for save & resume
 	let game = Game()
-	@IBOutlet weak var cardsLabel: UILabel!
+	@IBOutlet weak var handView: HandView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		cardsLabel.text = "1. \(game.userPlayer.hand[0])\n2. \(game.userPlayer.hand[1])\n???\n???"
+		handView!.showCard(card: game.userPlayer.hand[0], index: 0)
+		handView!.showCard(card: game.userPlayer.hand[1], index: 1)
     }
 
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
