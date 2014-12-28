@@ -5,10 +5,10 @@ enum Suit: Printable {
 	
 	var description : String {
 		switch self {
-		case Clubs: return "Clubs"
-		case Hearts: return "Hearts"
-		case Spades: return "Spades"
-		case Diamonds: return "Diamonds"
+		case Clubs: return "♣"
+		case Hearts: return "♥"
+		case Spades: return "♠"
+		case Diamonds: return "♦"
 		}
 	}
 }
@@ -20,13 +20,13 @@ enum CardValue: Int, Printable {
 	
 	var description: String {
 		if self == Ace {
-			return "Ace"
+			return "A"
 		} else if self == Jack {
-			return "Jack"
+			return "J"
 		} else if self == Queen {
-			return "Queen"
+			return "Q"
 		} else if self == King {
-			return "King"
+			return "K"
 		} else {
 			return "\(toRaw())"
 		}
@@ -49,6 +49,6 @@ struct Card: Printable {
 	}
 	
 	var description: String {
-		return "\(value) of \(suit)"
+		return "\(value)\(suit)"
 	}
 }
