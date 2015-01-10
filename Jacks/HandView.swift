@@ -1,12 +1,29 @@
 import UIKit
 
+protocol HandViewDelegate {
+	func handView(handView: HandView, selectedPosition: Int)
+}
+
 // Should be 3.1x as wide as its height
 class HandView: UIView {
+	var delegate: HandViewDelegate?
+	
+	var enabled: Bool {
+		didSet {
+			for sv in subviews {
+				(sv as CardView).enabled = enabled
+			}
+		}
+	}
+	
 	required init(coder aDecoder: NSCoder) {
+		self.enabled = false
 		super.init(coder: aDecoder)
 		
 		for i in 0..<4 {
-			addSubview(CardView(frame: CGRectZero)) // will be laid out later
+			let cv = CardView(frame: CGRectZero)
+			cv.addTarget(self, action: "cardTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+			addSubview(cv) // will be laid out later
 		}
 	}
 	
@@ -29,5 +46,16 @@ class HandView: UIView {
 	
 	func showCard(#card: Card, index i: Int) {
 		(subviews[i] as CardView).showCard(card)
+	}
+	
+	func cardTapped(sender: CardView) {
+		for i in 0..<4 {
+			if subviews[i] === sender {
+				delegate?.handView(self, selectedPosition: i)
+				return
+			}
+		}
+		
+		assert(false, "HandView didn't find the selected card view")
 	}
 }

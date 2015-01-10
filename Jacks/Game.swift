@@ -1,7 +1,7 @@
 import UIKit
 
 protocol GameDelegate: ComputerPlayerDelegate {
-	// TODO
+	func game(game: Game, hasNewTopDiscard: Card?)
 }
 
 class Game: NSObject, ComputerPlayerDelegate {
@@ -44,6 +44,7 @@ class Game: NSObject, ComputerPlayerDelegate {
 	
 	func discard(card: Card) {
 		discards.append(card)
+		delegate?.game(self, hasNewTopDiscard: card)
 	}
 	
 	func topOfDiscards() -> Card {
@@ -51,7 +52,9 @@ class Game: NSObject, ComputerPlayerDelegate {
 	}
 	
 	func takeTopOfDiscards() -> Card {
-		return discards.removeLast()
+		let result = discards.removeLast()
+		delegate?.game(self, hasNewTopDiscard: discards.last)
+		return result
 	}
 	
 	func takeTopOfDeck() -> Card {
