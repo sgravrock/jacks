@@ -31,8 +31,13 @@ class CardView: UIControl {
 		label.text = "\(card.value)\n\(card.suit)"
 	}
 	
-	func hideCard() {
+	func showBack() {
 		backgroundColor = UIColor.lightGrayColor()
+		label.hidden = true
+	}
+	
+	func showNothing() {
+		backgroundColor = UIColor.clearColor()
 		label.hidden = true
 	}
 	
@@ -43,6 +48,6 @@ class CardView: UIControl {
 		addSubview(label)
 		label.textAlignment = NSTextAlignment.Center
 		label.numberOfLines = 2
-		hideCard()
+		showBack()
 	}
 }

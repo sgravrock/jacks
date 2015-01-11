@@ -64,9 +64,9 @@ class TurnStartViewController: UIViewController, GameDelegate, HandViewDelegate 
 	
 	func game(game: Game, hasNewTopDiscard card: Card?) {
 		if let card = card {
-			discardView!.showCard(card)
+			discardView.showCard(card)
 		} else {
-			discardView!.hideCard()
+			discardView.showBack()
 		}
 	}
 	
@@ -83,7 +83,15 @@ class TurnStartViewController: UIViewController, GameDelegate, HandViewDelegate 
 		handView.enabled = cardTaken != nil
 		deckView.enabled = cardTaken == nil
 		discardView.enabled = true // Always enabled, to either take or discard.
-		discardView.showCard(game.topOfDiscards())
+		
+		if let c = game.topOfDiscards() {
+			discardView.showCard(c)
+		} else {
+			// There's no card left on the discard pile. Tell its view not to show anything.
+			// (We don't actually hide the view itself because the user needs to be able to 
+			// discard the current card by tapping it.
+			discardView.showNothing()
+		}
 	}
 	
 	private func finishTurn() {

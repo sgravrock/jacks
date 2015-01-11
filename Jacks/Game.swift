@@ -47,8 +47,8 @@ class Game: NSObject, ComputerPlayerDelegate {
 		delegate?.game(self, hasNewTopDiscard: card)
 	}
 	
-	func topOfDiscards() -> Card {
-		return discards.last!
+	func topOfDiscards() -> Card? {
+		return discards.last
 	}
 	
 	func takeTopOfDiscards() -> Card {

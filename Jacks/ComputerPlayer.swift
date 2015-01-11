@@ -14,7 +14,8 @@ class ComputerPlayer: Player {
 	func takeTurn(game: Game) {
 		logStrategy("Begin \(name) turn")
 		logStrategy("Initial hand: \(formatHandForLogging())")
-		let takeFromDiscard = game.topOfDiscards().points() <= takeDiscardThreshold
+		let td = game.topOfDiscards()
+		let takeFromDiscard = td != nil && td!.points() <= takeDiscardThreshold
 		let newCard = takeFromDiscard ? game.takeTopOfDiscards() : game.takeTopOfDeck()
 		var move: Move
 
