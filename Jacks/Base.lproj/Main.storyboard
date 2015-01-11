@@ -69,7 +69,7 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIE-FP-Sbz" customClass="HandView" customModule="Jacks" customModuleProvider="target">
                                 <rect key="frame" x="16" y="146" width="170" height="55"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="1jD-nx-gJG"/>
                                     <constraint firstAttribute="height" constant="55" id="7sQ-j1-6tC"/>
@@ -88,14 +88,6 @@
                                     <action selector="takeFromDeckSelected:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="udt-Mi-80a"/>
                                 </connections>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvh-WS-fa8" userLabel="Deck" customClass="CardView" customModule="Jacks" customModuleProvider="target">
-                                <rect key="frame" x="41" y="83" width="39" height="55"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="aal-Me-pdi"/>
-                                    <constraint firstAttribute="width" constant="39" id="oHF-z3-WOY"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5C0-yr-dZm" userLabel="Discard" customClass="CardView" customModule="Jacks" customModuleProvider="target">
                                 <rect key="frame" x="63" y="20" width="39" height="55"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -107,14 +99,23 @@
                                     <action selector="takeFromDiscardSelected:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Okp-YV-Z9d"/>
                                 </connections>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvh-WS-fa8" userLabel="Deck" customClass="CardView" customModule="Jacks" customModuleProvider="target">
+                                <rect key="frame" x="147" y="20" width="39" height="55"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="aal-Me-pdi"/>
+                                    <constraint firstAttribute="width" constant="39" id="oHF-z3-WOY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QIE-FP-Sbz" firstAttribute="top" secondItem="tvh-WS-fa8" secondAttribute="bottom" constant="8" id="0b3-ro-Ab1"/>
-                            <constraint firstItem="tvh-WS-fa8" firstAttribute="top" secondItem="mMx-bN-TTb" secondAttribute="bottom" constant="8" id="3fm-tg-Gdf"/>
+                            <constraint firstItem="QIE-FP-Sbz" firstAttribute="top" secondItem="tvh-WS-fa8" secondAttribute="bottom" constant="71" id="0b3-ro-Ab1"/>
+                            <constraint firstItem="tvh-WS-fa8" firstAttribute="top" secondItem="mMx-bN-TTb" secondAttribute="bottom" constant="-55" id="3fm-tg-Gdf"/>
                             <constraint firstItem="mMx-bN-TTb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="IdM-yY-iOk"/>
                             <constraint firstItem="5C0-yr-dZm" firstAttribute="leading" secondItem="mMx-bN-TTb" secondAttribute="trailing" constant="8" id="Qwe-D7-wlm"/>
                             <constraint firstItem="5C0-yr-dZm" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="a0v-ut-7Kc"/>
+                            <constraint firstItem="tvh-WS-fa8" firstAttribute="trailing" secondItem="QIE-FP-Sbz" secondAttribute="trailing" id="coO-Ch-suh"/>
                             <constraint firstItem="QIE-FP-Sbz" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="geQ-51-TcH"/>
                             <constraint firstItem="mMx-bN-TTb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="mqL-Ir-YER"/>
                         </constraints>
