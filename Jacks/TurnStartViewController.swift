@@ -42,10 +42,42 @@ class TurnStartViewController: UIViewController, GameDelegate, HandViewDelegate 
 	
 	func destSelected(destIx: Int) {
 		let discard = game.userPlayer.hand[destIx]
-		game.userPlayer.hand[destIx] = cardTaken!
-		game.discard(discard)
-		log.text = "You took the \(cardTaken!)\nand discarded the \(discard)"
-		finishTurn()
+		handView.showCardAnimated(discard, atIndex: destIx) { () -> Void in
+			// Clone the relevant card views so we can animate a swap
+			let destCardView = self.handView.cardViewAtIndex(destIx)
+			let discardingAnimationView = destCardView.cloneInView(self.view)
+			discardingAnimationView.showCard(self.game.userPlayer.hand[destIx])
+			destCardView.showNothing()
+
+			let takingAnimationView = self.cardTakenView.cloneInView(self.view)
+			takingAnimationView.showCard(self.cardTaken!)
+			self.cardTakenView.showNothing()
+			self.handView.enabled = false
+			
+			UIView.animateWithDuration(0.5, animations: { () -> Void in
+				// Swap the positions of the cards
+				var f = discardingAnimationView.frame
+				f.origin = self.discardView.convertPoint(self.discardView.bounds.origin, toView: self.view)
+				discardingAnimationView.frame = f
+				
+				f = takingAnimationView.frame
+				f.origin = destCardView.convertPoint(destCardView.bounds.origin, toView: self.view)
+				takingAnimationView.frame = f
+			}, completion: { (complete) -> Void in
+				let when = dispatch_time(DISPATCH_TIME_NOW, Int64(0.35 * Double(NSEC_PER_SEC)))
+				dispatch_after(when, dispatch_get_main_queue(), { () -> Void in
+					self.game.userPlayer.hand[destIx] = self.cardTaken!
+					self.game.discard(discard)
+					self.handView.showCard(card: self.cardTaken!, index: destIx)
+					discardingAnimationView.removeFromSuperview()
+					takingAnimationView.removeFromSuperview()
+					self.log.text = "You took the \(self.cardTaken!)\nand discarded the \(discard)"
+					self.handView.showBackAnimated(i: destIx, completion: { () -> Void in
+						self.finishTurn()
+					})
+				})
+			})
+		}
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

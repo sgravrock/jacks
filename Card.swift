@@ -33,7 +33,7 @@ enum CardValue: Int, Printable {
 	}
 }
 
-struct Card: Printable {
+struct Card: Printable, Equatable {
 	let suit: Suit
 	let value: CardValue
 	
@@ -51,4 +51,8 @@ struct Card: Printable {
 	var description: String {
 		return "\(value)\(suit)"
 	}
+}
+
+func ==(lhs: Card, rhs: Card) -> Bool {
+	return lhs.suit == rhs.suit && lhs.value == rhs.value
 }

@@ -56,6 +56,33 @@ class ComputerPlayerTests: XCTestCase, ComputerPlayerDelegate {
 		XCTAssertEqual(values, [5, 6, 1, 1], "Some cards were replaced")
 	}
 	
+	func testDoesntDiscardCardTakenFromDiscard() {
+		let target = makePlayer([3, 3, 10, 10])
+		XCTAssertEqual(target.takeDiscardThreshold, 4, "Test may need to be updated")
+		let game = makeGame(Deck())
+		let suspectCard = Card(suit: Suit.Clubs, value: CardValue.Four)
+		game.discard(suspectCard)
+		game.discard(Card(suit: Suit.Clubs, value: CardValue.Jack))
+		game.discard(Card(suit: Suit.Spades, value: CardValue.Jack))
+		// Player should replace the two unknowns with the jacks from the discard.
+		target.takeTurn(game)
+		game.takeTopOfDiscards() // Remove away whatever the player just discarded
+		target.takeTurn(game)
+		XCTAssertEqual(target.hand.map({ $0.value }),
+			[CardValue.Three, CardValue.Three, CardValue.Jack, CardValue.Jack], "Wrong hand")
+		game.takeTopOfDiscards() // Remove away whatever the player just discarded
+		XCTAssertEqual(game.topOfDiscards()!, suspectCard, "Wrong top discard")
+		
+		// The player now knows that all four cards are better than the top discard.
+		// So even though the top discard is better than the player's take threshold,
+		// The card should not be taken.
+		target.takeTurn(game)
+		
+		if let c = lastMove?.cardTakenFromDiscard {
+			XCTFail("Discard was taken")
+		}
+	}
+
 	// Creates a game with a high initial discard.
 	// Tests that care about the contents of the deck should provide one.
 	func makeGame(deck: Deck?) -> Game {

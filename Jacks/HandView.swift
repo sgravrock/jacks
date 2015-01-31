@@ -48,6 +48,18 @@ class HandView: UIView {
 		(subviews[i] as CardView).showCard(card)
 	}
 	
+	func showCardAnimated(card: Card, atIndex i: Int, completion:  (() -> Void)) {
+		(subviews[i] as CardView).showCardAnimated(card, completion: completion)
+	}
+	
+	func showBackAnimated(#i: Int, completion:  (() -> Void)) {
+		(subviews[i] as CardView).showBackAnimated(completion)
+	}
+	
+	func cardViewAtIndex(i: Int) -> CardView {
+		return subviews[i] as CardView
+	}
+	
 	func cardTapped(sender: CardView) {
 		for i in 0..<4 {
 			if subviews[i] === sender {

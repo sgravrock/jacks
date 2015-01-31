@@ -6,16 +6,16 @@ protocol ComputerPlayerDelegate: class {
 
 class ComputerPlayer: Player {
 	weak var delegate: ComputerPlayerDelegate?
-	private var cardsKnown = [true, true, false, false]
-	private let replaceUnknownThreshold = 4
-	private let takeDiscardThreshold = 4
+	let replaceUnknownThreshold = 4
+	let takeDiscardThreshold = 4
 	private let willLogStrategy = false
+	private var cardsKnown = [true, true, false, false]
 	
 	func takeTurn(game: Game) {
 		logStrategy("Begin \(name) turn")
 		logStrategy("Initial hand: \(formatHandForLogging())")
 		let td = game.topOfDiscards()
-		let takeFromDiscard = td != nil && td!.points() <= takeDiscardThreshold
+		let takeFromDiscard = shouldTakeFromDiscard(game)
 		let newCard = takeFromDiscard ? game.takeTopOfDiscards() : game.takeTopOfDeck()
 		var move: Move
 
@@ -41,7 +41,7 @@ class ComputerPlayer: Player {
 		delegate?.computerPlayer(self, didMove: move)
 	}
 	
-	func indexOfChosenSlot(newCard: Card) -> Int? {
+	private func indexOfChosenSlot(newCard: Card) -> Int? {
 		// Replace unknowns first if the new card is good enough.
 		// Otherwise replace the first known card that's worse than the new card.
 		if newCard.points() <= replaceUnknownThreshold {
@@ -56,7 +56,7 @@ class ComputerPlayer: Player {
 		return indexOfFirstKnownWorseCard(newCard)
 	}
 	
-	func indexOfFirstUnkown() -> Int? {
+	private func indexOfFirstUnkown() -> Int? {
 		for i in 0...cardsKnown.count - 1 {
 			if !cardsKnown[i] {
 				return i
@@ -66,7 +66,7 @@ class ComputerPlayer: Player {
 		return nil
 	}
 	
-	func indexOfFirstKnownWorseCard(newCard: Card) -> Int? {
+	private func indexOfFirstKnownWorseCard(newCard: Card) -> Int? {
 		for i in 0...cardsKnown.count - 1 {
 			if cardsKnown[i] && hand[i].points() > newCard.points() {
 				logStrategy("Replacing worse card in slot \(i): \(hand[i])")
@@ -78,13 +78,23 @@ class ComputerPlayer: Player {
 		return nil
 	}
 	
-	func logStrategy(msg: String) {
+	private func shouldTakeFromDiscard(game: Game) -> Bool {
+		if let td = game.topOfDiscards() {
+			// Don't take the discard if it's above the threshold or we don't have a place
+			// to put it.
+			return td.points() <= takeDiscardThreshold && indexOfChosenSlot(td) != nil
+		}
+		
+		return false
+	}
+	
+	private func logStrategy(msg: String) {
 		if willLogStrategy {
 			println(msg)
 		}
 	}
 	
-	func formatHandForLogging() -> String {
+	private func formatHandForLogging() -> String {
 		var result = ""
 		
 		for i in 0..<hand.count {
