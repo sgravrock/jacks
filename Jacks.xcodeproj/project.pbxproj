@@ -221,10 +221,9 @@
 			};
 			buildConfigurationList = AAD54EFD1A4A4DFA002E9443 /* Build configuration list for PBXProject "Jacks" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
