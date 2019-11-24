@@ -66,11 +66,11 @@ class ComputerPlayerTests: XCTestCase, ComputerPlayerDelegate {
 		game.discard(Card(suit: Suit.spades, value: CardValue.jack))
 		// Player should replace the two unknowns with the jacks from the discard.
 		target.takeTurn(game)
-		game.takeTopOfDiscards() // Remove away whatever the player just discarded
+		_ = game.takeTopOfDiscards() // Remove away whatever the player just discarded
 		target.takeTurn(game)
 		XCTAssertEqual(target.hand.map({ $0.value }),
 			[CardValue.three, CardValue.three, CardValue.jack, CardValue.jack], "Wrong hand")
-		game.takeTopOfDiscards() // Remove away whatever the player just discarded
+		_ = game.takeTopOfDiscards() // Remove away whatever the player just discarded
 		XCTAssertEqual(game.topOfDiscards()!, suspectCard, "Wrong top discard")
 		
 		// The player now knows that all four cards are better than the top discard.
@@ -78,9 +78,7 @@ class ComputerPlayerTests: XCTestCase, ComputerPlayerDelegate {
 		// The card should not be taken.
 		target.takeTurn(game)
 		
-		if let c = lastMove?.cardTakenFromDiscard {
-			XCTFail("Discard was taken")
-		}
+		XCTAssertNil(lastMove?.cardTakenFromDiscard, "Discard was taken")
 	}
 
 	// Creates a game with a high initial discard.

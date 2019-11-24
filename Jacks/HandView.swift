@@ -20,7 +20,7 @@ class HandView: UIView {
 		self.enabled = false
 		super.init(coder: aDecoder)
 		
-		for i in 0..<4 {
+		for _ in 0..<4 {
 			let cv = CardView(frame: CGRect.zero)
 			cv.addTarget(self, action: #selector(HandView.cardTapped(_:)), for: UIControl.Event.touchUpInside)
 			addSubview(cv) // will be laid out later

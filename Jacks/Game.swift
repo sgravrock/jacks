@@ -32,7 +32,7 @@ class Game: NSObject, ComputerPlayerDelegate {
 		players.append(userPlayer)
 		
 		// Deal the initial hands
-		for i in 0...3 {
+		for _ in 0...3 {
 			for j in 0...3 {
 				players[j].hand.append(deck.pop())
 			}

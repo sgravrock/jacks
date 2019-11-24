@@ -27,7 +27,7 @@ class TurnStartViewController: UIViewController, GameDelegate, HandViewDelegate 
 	}
 	
 	@IBAction func takeFromDiscardSelected(_ sender: AnyObject) {
-		if let c = cardTaken {
+		if cardTaken != nil {
 			// Discarding
 			game.discard(cardTaken!)
 			log.text = "You took and discarded the \(cardTaken!)."

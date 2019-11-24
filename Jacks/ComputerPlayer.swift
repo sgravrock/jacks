@@ -14,7 +14,6 @@ class ComputerPlayer: Player {
 	func takeTurn(_ game: Game) {
 		logStrategy("Begin \(name) turn")
 		logStrategy("Initial hand: \(formatHandForLogging())")
-		let td = game.topOfDiscards()
 		let takeFromDiscard = shouldTakeFromDiscard(game)
 		let newCard = takeFromDiscard ? game.takeTopOfDiscards() : game.takeTopOfDeck()
 		var move: Move
@@ -22,7 +21,7 @@ class ComputerPlayer: Player {
 		if takeFromDiscard {
 			logStrategy("Taking top discard: \(newCard)")
 		} else {
-			logStrategy("Skipping top discard \(game.topOfDiscards()) and taking \(newCard) from deck")
+			logStrategy("Skipping top discard \(String(describing: game.topOfDiscards())) and taking \(newCard) from deck")
 		}
 
 		if let i = indexOfChosenSlot(newCard) {
