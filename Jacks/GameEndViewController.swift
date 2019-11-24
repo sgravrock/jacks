@@ -29,13 +29,13 @@ class GameEndViewController: UIViewController {
 			} else {
 				computerPlayerHandViews[i].showHand(player.hand)
 				computerPlayerHeaders[i].text = "\(player.name): \(player.score()) points"
-				i++
+				i += 1
 			}
 		}
 
 	}
 	
-	func describeHand(p: Player) -> String {
+	func describeHand(_ p: Player) -> String {
 		return "\(p.hand[0]), \(p.hand[1]), \(p.hand[2]), \(p.hand[3]): \(p.score()) points"
 	}
 }

@@ -6,7 +6,7 @@ class ComputerPlayerTests: XCTestCase, ComputerPlayerDelegate {
 	
 	func testStrategy_takeDiscard() {
 		let target = makePlayer([5, 6, 7, 8])
-		let topDc = Card(suit: Suit.Clubs, value: CardValue.Four)
+		let topDc = Card(suit: Suit.clubs, value: CardValue.four)
 		let game = makeGame(nil)
 		game.discard(topDc)
 		target.takeTurn(game)
@@ -23,7 +23,7 @@ class ComputerPlayerTests: XCTestCase, ComputerPlayerDelegate {
 	func testStrategy_dontTakeDiscard() {
 		let target = makePlayer([5, 6, 7, 8])
 		let game = makeGame(nil)
-		game.discard(Card(suit: Suit.Clubs, value: CardValue.Five))
+		game.discard(Card(suit: Suit.clubs, value: CardValue.five))
 		target.takeTurn(game)
 		XCTAssertTrue(lastMove != nil, "lastMove wasn't set")
 		XCTAssertTrue(lastMove?.cardTakenFromDiscard == nil, "Card was taken from discard")
@@ -33,15 +33,15 @@ class ComputerPlayerTests: XCTestCase, ComputerPlayerDelegate {
 		let target = makePlayer([9, 10, 7, 8])
 		let deck = Deck()
 		let game = makeGame(deck)
-		deck.cards.append(Card(suit: Suit.Clubs, value: CardValue.Nine))
+		deck.cards.append(Card(suit: Suit.clubs, value: CardValue.nine))
 		target.takeTurn(game)
 		XCTAssertTrue(lastMove != nil, "lastMove wasn't set")
-		XCTAssertEqual(target.hand[1].suit, Suit.Clubs, "Card wasn't placed correctly")
-		XCTAssertEqual(target.hand[1].value, CardValue.Nine, "Card wasn't placed correctly")
+		XCTAssertEqual(target.hand[1].suit, Suit.clubs, "Card wasn't placed correctly")
+		XCTAssertEqual(target.hand[1].value, CardValue.nine, "Card wasn't placed correctly")
 		
 		if let discarded = lastMove?.cardDiscarded {
-			XCTAssertEqual(discarded.suit, Suit.Clubs, "Wrong card was discarded")
-			XCTAssertEqual(discarded.value, CardValue.Ten, "Wrong card was discarded")
+			XCTAssertEqual(discarded.suit, Suit.clubs, "Wrong card was discarded")
+			XCTAssertEqual(discarded.value, CardValue.ten, "Wrong card was discarded")
 		}
 	}
 	
@@ -49,7 +49,7 @@ class ComputerPlayerTests: XCTestCase, ComputerPlayerDelegate {
 		let target = makePlayer([5, 6, 1, 1])
 		let deck = Deck()
 		let game = makeGame(deck)
-		deck.cards.append(Card(suit: Suit.Clubs, value: CardValue.Six))
+		deck.cards.append(Card(suit: Suit.clubs, value: CardValue.six))
 		target.takeTurn(game)
 		XCTAssertTrue(lastMove != nil, "lastMove wasn't set")
 		let values = target.hand.map({ $0.value.rawValue })
@@ -60,16 +60,16 @@ class ComputerPlayerTests: XCTestCase, ComputerPlayerDelegate {
 		let target = makePlayer([3, 3, 10, 10])
 		XCTAssertEqual(target.takeDiscardThreshold, 4, "Test may need to be updated")
 		let game = makeGame(Deck())
-		let suspectCard = Card(suit: Suit.Clubs, value: CardValue.Four)
+		let suspectCard = Card(suit: Suit.clubs, value: CardValue.four)
 		game.discard(suspectCard)
-		game.discard(Card(suit: Suit.Clubs, value: CardValue.Jack))
-		game.discard(Card(suit: Suit.Spades, value: CardValue.Jack))
+		game.discard(Card(suit: Suit.clubs, value: CardValue.jack))
+		game.discard(Card(suit: Suit.spades, value: CardValue.jack))
 		// Player should replace the two unknowns with the jacks from the discard.
 		target.takeTurn(game)
 		game.takeTopOfDiscards() // Remove away whatever the player just discarded
 		target.takeTurn(game)
 		XCTAssertEqual(target.hand.map({ $0.value }),
-			[CardValue.Three, CardValue.Three, CardValue.Jack, CardValue.Jack], "Wrong hand")
+			[CardValue.three, CardValue.three, CardValue.jack, CardValue.jack], "Wrong hand")
 		game.takeTopOfDiscards() // Remove away whatever the player just discarded
 		XCTAssertEqual(game.topOfDiscards()!, suspectCard, "Wrong top discard")
 		
@@ -85,20 +85,20 @@ class ComputerPlayerTests: XCTestCase, ComputerPlayerDelegate {
 
 	// Creates a game with a high initial discard.
 	// Tests that care about the contents of the deck should provide one.
-	func makeGame(deck: Deck?) -> Game {
+	func makeGame(_ deck: Deck?) -> Game {
 		let g = deck == nil ? Game() : Game(deck: deck!)
-		g.discard(Card(suit: Suit.Clubs, value: CardValue.King))
+		g.discard(Card(suit: Suit.clubs, value: CardValue.king))
 		return g
 	}
 	
-	func makePlayer(cardValues: [Int]) -> ComputerPlayer {
+	func makePlayer(_ cardValues: [Int]) -> ComputerPlayer {
 		let p = ComputerPlayer(name: "test player")
-		p.hand = cardValues.map({Card(suit: Suit.Clubs, value: CardValue(rawValue: $0)!)})
+		p.hand = cardValues.map({Card(suit: Suit.clubs, value: CardValue(rawValue: $0)!)})
 		p.delegate = self
 		return p
 	}
 	
-	func computerPlayer(computerPlayer: Player, didMove move: Move) {
+	func computerPlayer(_ computerPlayer: Player, didMove move: Move) {
 		lastMove = move
 	}
 }

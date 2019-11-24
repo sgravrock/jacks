@@ -1,16 +1,16 @@
 import UIKit
 
 protocol GameDelegate: ComputerPlayerDelegate {
-	func game(game: Game, hasNewTopDiscard: Card?)
+	func game(_ game: Game, hasNewTopDiscard: Card?)
 }
 
 class Game: NSObject, ComputerPlayerDelegate {
 	var players = [Player]()
 	let userPlayer = Player(name: "User")
 	weak var delegate: GameDelegate?
-	private var deck: Deck
-	private var discards = [Card]()
-	private var currentPlayerIx = 0
+	fileprivate var deck: Deck
+	fileprivate var discards = [Card]()
+	fileprivate var currentPlayerIx = 0
 	
 	override convenience init() {
 		let deck = Deck()
@@ -42,7 +42,7 @@ class Game: NSObject, ComputerPlayerDelegate {
 
 	}
 	
-	func discard(card: Card) {
+	func discard(_ card: Card) {
 		discards.append(card)
 		delegate?.game(self, hasNewTopDiscard: card)
 	}
@@ -93,9 +93,9 @@ class Game: NSObject, ComputerPlayerDelegate {
 		}
 	}
 	
-	func breakTieByJackCount(candidates: [Player]) -> Player? {
+	func breakTieByJackCount(_ candidates: [Player]) -> Player? {
 		let winners = findByHighestScore(candidates, computeScore: { (p) -> Int in
-			p.hand.filter({$0.value == CardValue.Jack}).count
+			p.hand.filter({$0.value == CardValue.jack}).count
 		})
 		
 		if winners.count == 1 {
@@ -105,13 +105,13 @@ class Game: NSObject, ComputerPlayerDelegate {
 		}
 	}
 	
-	func breakTieByHighestJack(candidates: [Player]) -> Player {
-		let suitsByRank = [Suit.Diamonds, Suit.Clubs, Suit.Hearts, Suit.Spades]
+	func breakTieByHighestJack(_ candidates: [Player]) -> Player {
+		let suitsByRank = [Suit.diamonds, Suit.clubs, Suit.hearts, Suit.spades]
 		var ranked = findByHighestScore(candidates, computeScore: { (p) -> Int in
 			var score = -1
 			for c in p.hand {
-				if c.value == CardValue.Jack {
-					score = max(score, suitsByRank.indexOf(c.suit)!)
+				if c.value == CardValue.jack {
+					score = max(score, suitsByRank.index(of: c.suit)!)
 				}
 			}
 			return score
@@ -120,7 +120,7 @@ class Game: NSObject, ComputerPlayerDelegate {
 	}
 	
 	// Returns the player(s) with the lowest score according to the supplied score function
-	func findByLowestScore(candidates: [Player], computeScore: (Player) -> Int) -> [Player] {
+	func findByLowestScore(_ candidates: [Player], computeScore: (Player) -> Int) -> [Player] {
 		var winners = [Player]()
 		var lowestScore = Int.max
 		
@@ -138,11 +138,11 @@ class Game: NSObject, ComputerPlayerDelegate {
 		return winners
 	}
 	
-	func findByHighestScore(candidates: [Player], computeScore: (Player) -> Int) -> [Player] {
+	func findByHighestScore(_ candidates: [Player], computeScore: (Player) -> Int) -> [Player] {
 		return findByLowestScore(candidates, computeScore: {-1 * computeScore($0)})
 	}
 	
-	func computerPlayer(computerPlayer: Player, didMove move: Move) {
+	func computerPlayer(_ computerPlayer: Player, didMove move: Move) {
 		delegate?.computerPlayer(computerPlayer, didMove: move)
 	}
 }

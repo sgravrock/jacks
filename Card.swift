@@ -1,31 +1,31 @@
 import UIKit
 
 enum Suit: CustomStringConvertible {
-	case Clubs, Hearts, Spades, Diamonds
+	case clubs, hearts, spades, diamonds
 	
 	var description : String {
 		switch self {
-		case Clubs: return "♣"
-		case Hearts: return "♥"
-		case Spades: return "♠"
-		case Diamonds: return "♦"
+		case .clubs: return "♣"
+		case .hearts: return "♥"
+		case .spades: return "♠"
+		case .diamonds: return "♦"
 		}
 	}
 }
 
 enum CardValue: Int, CustomStringConvertible {
-	case Ace = 1,
-	Two = 2, Three = 3, Four = 4, Five = 5, Six = 6, Seven = 7, Eight = 8, Nine = 9, Ten = 10,
-	Jack = 11, Queen = 12, King = 13
+	case ace = 1,
+	two = 2, three = 3, four = 4, five = 5, six = 6, seven = 7, eight = 8, nine = 9, ten = 10,
+	jack = 11, queen = 12, king = 13
 	
 	var description: String {
-		if self == Ace {
+		if self == CardValue.ace {
 			return "A"
-		} else if self == Jack {
+		} else if self == CardValue.jack {
 			return "J"
-		} else if self == Queen {
+		} else if self == CardValue.queen {
 			return "Q"
-		} else if self == King {
+		} else if self == CardValue.king {
 			return "K"
 		} else {
 			return "\(rawValue)"
@@ -39,9 +39,9 @@ struct Card: CustomStringConvertible, Equatable {
 	
 	func points() -> Int {
 		switch (value) {
-		case CardValue.Jack:
+		case CardValue.jack:
 			return 0
-		case CardValue.Queen, CardValue.King:
+		case CardValue.queen, CardValue.king:
 			return 10
 		default:
 			return value.rawValue

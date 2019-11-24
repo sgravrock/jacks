@@ -11,7 +11,7 @@ class GameStartViewController: UIViewController {
 		handView!.showCard(card: game.userPlayer.hand[1], index: 1)
     }
 
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-		(segue.destinationViewController as! TurnStartViewController).game = game
+	override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+		(segue.destination as! TurnStartViewController).game = game
 	}
 }

@@ -1,13 +1,13 @@
 import UIKit
 
 class CardView: UIControl {
-	let label = UILabel(frame: CGRectZero)
-	let backView = UIControl(frame: CGRectZero)
+	let label = UILabel(frame: CGRect.zero)
+	let backView = UIControl(frame: CGRect.zero)
 	var card: Card? = nil
 	
-	override var enabled: Bool {
+	override var isEnabled: Bool {
 		didSet {
-			layer.borderColor = (enabled ? UIColor.blueColor() : UIColor.blackColor()).CGColor
+			layer.borderColor = (isEnabled ? UIColor.blue : UIColor.black).cgColor
 		}
 	}
 	
@@ -25,10 +25,10 @@ class CardView: UIControl {
 		super.layoutSubviews()
 		label.frame = bounds
 		backView.frame = bounds
-		label.font = UIFont.systemFontOfSize(round(bounds.height * 0.36))
+		label.font = UIFont.systemFont(ofSize: round(bounds.height * 0.36))
 	}
 	
-	func showCard(cardToShow: Card) {
+	func showCard(_ cardToShow: Card) {
 		card = cardToShow
 		showSubview(label)
 		label.text = "\(cardToShow.value)\n\(cardToShow.suit)"
@@ -36,47 +36,47 @@ class CardView: UIControl {
 	
 	func showBack() {
 		card = nil
-		backView.backgroundColor = UIColor.lightGrayColor()
+		backView.backgroundColor = UIColor.lightGray
 		showSubview(backView)
 	}
 	
 	func showNothing() {
 		card = nil
-		backView.backgroundColor = UIColor.clearColor()
+		backView.backgroundColor = UIColor.clear
 		showSubview(backView)
 	}
 	
-	func showCardAnimated(card: Card, completion:  (() -> Void)) {
+	func showCardAnimated(_ card: Card, completion:  @escaping (() -> Void)) {
 		label.text = "\(card.value)\n\(card.suit)"
 
-		UIView.transitionFromView(backView, toView: label, duration: 0.5,
-			options: UIViewAnimationOptions.TransitionFlipFromLeft) { (completed) -> Void in
+		UIView.transition(from: backView, to: label, duration: 0.5,
+			options: UIViewAnimationOptions.transitionFlipFromLeft) { (completed) -> Void in
 				completion()
 		}
 	}
 	
-	func showBackAnimated(completion:  (() -> Void)) {
-		backView.backgroundColor = UIColor.lightGrayColor()
-		UIView.transitionFromView(label, toView: backView, duration: 0.5,
-			options: UIViewAnimationOptions.TransitionFlipFromLeft) { (completed) -> Void in
+	func showBackAnimated(_ completion:  @escaping (() -> Void)) {
+		backView.backgroundColor = UIColor.lightGray
+		UIView.transition(from: label, to: backView, duration: 0.5,
+			options: UIViewAnimationOptions.transitionFlipFromLeft) { (completed) -> Void in
 				completion()
 		}
 	}
 		
-	func cloneInView(destView: UIView) -> CardView {
-		let cloneOrigin = self.convertPoint(self.bounds.origin, toView: destView)
-		let cloneFrame = CGRectMake(cloneOrigin.x, cloneOrigin.y,
-			self.bounds.size.width, self.bounds.size.height);
+	func cloneInView(_ destView: UIView) -> CardView {
+		let cloneOrigin = self.convert(self.bounds.origin, to: destView)
+		let cloneFrame = CGRect(x: cloneOrigin.x, y: cloneOrigin.y,
+			width: self.bounds.size.width, height: self.bounds.size.height);
 		let clone = CardView(frame: cloneFrame)
 		destView.addSubview(clone)
 		return clone
 	}
 	
 	func subviewTapped() {
-		sendActionsForControlEvents(UIControlEvents.TouchUpInside)
+		sendActions(for: UIControlEvents.touchUpInside)
 	}
 	
-	private func showSubview(subview: UIView) {
+	fileprivate func showSubview(_ subview: UIView) {
 		if (subviews.count == 0) {
 			addSubview(subview)
 		} else if (subviews[0] as UIView != subview) {
@@ -85,14 +85,14 @@ class CardView: UIControl {
 		}
 	}
 	
-	private func setup() {
-		self.enabled = false
+	fileprivate func setup() {
+		self.isEnabled = false
 		layer.borderWidth = 1.5
 		layer.cornerRadius = 5
-		label.textAlignment = NSTextAlignment.Center
+		label.textAlignment = NSTextAlignment.center
 		label.numberOfLines = 2
-		label.backgroundColor = UIColor.whiteColor()
-		backView.addTarget(self, action: "subviewTapped", forControlEvents: UIControlEvents.TouchUpInside)
+		label.backgroundColor = UIColor.white
+		backView.addTarget(self, action: #selector(CardView.subviewTapped), for: UIControlEvents.touchUpInside)
 		showBack()
 	}
 }

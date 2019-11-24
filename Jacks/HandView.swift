@@ -1,7 +1,7 @@
 import UIKit
 
 protocol HandViewDelegate {
-	func handView(handView: HandView, selectedPosition: Int)
+	func handView(_ handView: HandView, selectedPosition: Int)
 }
 
 // Should be 3.1x as wide as its height
@@ -11,7 +11,7 @@ class HandView: UIView {
 	var enabled: Bool {
 		didSet {
 			for sv in subviews {
-				(sv as! CardView).enabled = enabled
+				(sv as! CardView).isEnabled = enabled
 			}
 		}
 	}
@@ -21,8 +21,8 @@ class HandView: UIView {
 		super.init(coder: aDecoder)
 		
 		for i in 0..<4 {
-			let cv = CardView(frame: CGRectZero)
-			cv.addTarget(self, action: "cardTapped:", forControlEvents: UIControlEvents.TouchUpInside)
+			let cv = CardView(frame: CGRect.zero)
+			cv.addTarget(self, action: #selector(HandView.cardTapped(_:)), for: UIControlEvents.touchUpInside)
 			addSubview(cv) // will be laid out later
 		}
 	}
@@ -33,34 +33,34 @@ class HandView: UIView {
 		var x: CGFloat = 0.0
 		
 		for v in subviews {
-			(v as UIView).frame = CGRectMake(x, 0, cardWidth, bounds.height)
+			(v as UIView).frame = CGRect(x: x, y: 0, width: cardWidth, height: bounds.height)
 			x += cardWidth + spacing
 		}
 	}
 	
-	func showHand(hand: [Card]) {
+	func showHand(_ hand: [Card]) {
 		for i in 0..<4 {
 			showCard(card: hand[i], index: i)
 		}
 	}
 	
-	func showCard(card card: Card, index i: Int) {
+	func showCard(card: Card, index i: Int) {
 		(subviews[i] as! CardView).showCard(card)
 	}
 	
-	func showCardAnimated(card: Card, atIndex i: Int, completion:  (() -> Void)) {
+	func showCardAnimated(_ card: Card, atIndex i: Int, completion:  @escaping (() -> Void)) {
 		(subviews[i] as! CardView).showCardAnimated(card, completion: completion)
 	}
 	
-	func showBackAnimated(i i: Int, completion:  (() -> Void)) {
+	func showBackAnimated(i: Int, completion:  @escaping (() -> Void)) {
 		(subviews[i] as! CardView).showBackAnimated(completion)
 	}
 	
-	func cardViewAtIndex(i: Int) -> CardView {
+	func cardViewAtIndex(_ i: Int) -> CardView {
 		return subviews[i] as! CardView
 	}
 	
-	func cardTapped(sender: CardView) {
+	func cardTapped(_ sender: CardView) {
 		for i in 0..<4 {
 			if subviews[i] === sender {
 				delegate?.handView(self, selectedPosition: i)

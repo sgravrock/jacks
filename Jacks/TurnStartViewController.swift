@@ -20,13 +20,13 @@ class TurnStartViewController: UIViewController, GameDelegate, HandViewDelegate 
 		playToNextUserTurn()
 	}
 	
-	@IBAction func takeFromDeckSelected(sender: AnyObject) {
+	@IBAction func takeFromDeckSelected(_ sender: AnyObject) {
 		cardTaken = game.takeTopOfDeck()
 		assert(cardTaken != nil, "game.takeTopOfDeck() didn't return a card")
 		updateUI()
 	}
 	
-	@IBAction func takeFromDiscardSelected(sender: AnyObject) {
+	@IBAction func takeFromDiscardSelected(_ sender: AnyObject) {
 		if let c = cardTaken {
 			// Discarding
 			game.discard(cardTaken!)
@@ -40,7 +40,7 @@ class TurnStartViewController: UIViewController, GameDelegate, HandViewDelegate 
 		}
 	}
 	
-	func destSelected(destIx: Int) {
+	func destSelected(_ destIx: Int) {
 		let discard = game.userPlayer.hand[destIx]
 		handView.showCardAnimated(discard, atIndex: destIx) { () -> Void in
 			// Clone the relevant card views so we can animate a swap
@@ -54,18 +54,18 @@ class TurnStartViewController: UIViewController, GameDelegate, HandViewDelegate 
 			self.cardTakenView.showNothing()
 			self.handView.enabled = false
 			
-			UIView.animateWithDuration(0.5, animations: { () -> Void in
+			UIView.animate(withDuration: 0.5, animations: { () -> Void in
 				// Swap the positions of the cards
 				var f = discardingAnimationView.frame
-				f.origin = self.discardView.convertPoint(self.discardView.bounds.origin, toView: self.view)
+				f.origin = self.discardView.convert(self.discardView.bounds.origin, to: self.view)
 				discardingAnimationView.frame = f
 				
 				f = takingAnimationView.frame
-				f.origin = destCardView.convertPoint(destCardView.bounds.origin, toView: self.view)
+				f.origin = destCardView.convert(destCardView.bounds.origin, to: self.view)
 				takingAnimationView.frame = f
 			}, completion: { (complete) -> Void in
-				let when = dispatch_time(DISPATCH_TIME_NOW, Int64(0.35 * Double(NSEC_PER_SEC)))
-				dispatch_after(when, dispatch_get_main_queue(), { () -> Void in
+				let when = DispatchTime.now() + Double(Int64(0.35 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+				DispatchQueue.main.asyncAfter(deadline: when, execute: { () -> Void in
 					self.game.userPlayer.hand[destIx] = self.cardTaken!
 					self.game.discard(discard)
 					self.handView.showCard(card: self.cardTaken!, index: destIx)
@@ -80,11 +80,11 @@ class TurnStartViewController: UIViewController, GameDelegate, HandViewDelegate 
 		}
 	}
 	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-		(segue.destinationViewController as! GameEndViewController).game = game
+	override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+		(segue.destination as! GameEndViewController).game = game
 	}
 	
-	func computerPlayer(computerPlayer: Player, didMove move: Move) {
+	func computerPlayer(_ computerPlayer: Player, didMove move: Move) {
 		var desc = "\(computerPlayer.name) "
 		if let fromDiscard = move.cardTakenFromDiscard {
 			desc += "took \(fromDiscard) from discard and "
@@ -94,7 +94,7 @@ class TurnStartViewController: UIViewController, GameDelegate, HandViewDelegate 
 		log.text = "\(log.text!)\n\(desc)"
 	}
 	
-	func game(game: Game, hasNewTopDiscard card: Card?) {
+	func game(_ game: Game, hasNewTopDiscard card: Card?) {
 		if let card = card {
 			discardView.showCard(card)
 		} else {
@@ -102,19 +102,19 @@ class TurnStartViewController: UIViewController, GameDelegate, HandViewDelegate 
 		}
 	}
 	
-	func handView(handView: HandView, selectedPosition: Int) {
+	func handView(_ handView: HandView, selectedPosition: Int) {
 		destSelected(selectedPosition)
 	}
 	
-	private func updateUI() {
+	fileprivate func updateUI() {
 		if let c = cardTaken {
 			cardTakenView.showCard(c)
 		}
 		
-		cardTakenView.hidden = cardTaken == nil
+		cardTakenView.isHidden = cardTaken == nil
 		handView.enabled = cardTaken != nil
-		deckView.enabled = cardTaken == nil
-		discardView.enabled = true // Always enabled, to either take or discard.
+		deckView.isEnabled = cardTaken == nil
+		discardView.isEnabled = true // Always enabled, to either take or discard.
 		
 		if let c = game.topOfDiscards() {
 			discardView.showCard(c)
@@ -126,16 +126,16 @@ class TurnStartViewController: UIViewController, GameDelegate, HandViewDelegate 
 		}
 	}
 	
-	private func finishTurn() {
+	fileprivate func finishTurn() {
 		cardTaken = nil
 		playToNextUserTurn()
 	}
 
-	private func playToNextUserTurn() {
+	fileprivate func playToNextUserTurn() {
 		game.playToNextUserTurn()
 		
 		if (game.isFinished()) {
-			performSegueWithIdentifier("segueToGameEnd", sender: self)
+			performSegue(withIdentifier: "segueToGameEnd", sender: self)
 		} else {
 			updateUI()
 		}
