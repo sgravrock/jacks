@@ -81,7 +81,7 @@ class TurnStartViewController: UIViewController, GameDelegate, HandViewDelegate 
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-		(segue.destinationViewController as GameEndViewController).game = game
+		(segue.destinationViewController as! GameEndViewController).game = game
 	}
 	
 	func computerPlayer(computerPlayer: Player, didMove move: Move) {

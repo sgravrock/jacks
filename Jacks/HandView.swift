@@ -11,12 +11,12 @@ class HandView: UIView {
 	var enabled: Bool {
 		didSet {
 			for sv in subviews {
-				(sv as CardView).enabled = enabled
+				(sv as! CardView).enabled = enabled
 			}
 		}
 	}
 	
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		self.enabled = false
 		super.init(coder: aDecoder)
 		
@@ -44,20 +44,20 @@ class HandView: UIView {
 		}
 	}
 	
-	func showCard(#card: Card, index i: Int) {
-		(subviews[i] as CardView).showCard(card)
+	func showCard(card card: Card, index i: Int) {
+		(subviews[i] as! CardView).showCard(card)
 	}
 	
 	func showCardAnimated(card: Card, atIndex i: Int, completion:  (() -> Void)) {
-		(subviews[i] as CardView).showCardAnimated(card, completion: completion)
+		(subviews[i] as! CardView).showCardAnimated(card, completion: completion)
 	}
 	
-	func showBackAnimated(#i: Int, completion:  (() -> Void)) {
-		(subviews[i] as CardView).showBackAnimated(completion)
+	func showBackAnimated(i i: Int, completion:  (() -> Void)) {
+		(subviews[i] as! CardView).showBackAnimated(completion)
 	}
 	
 	func cardViewAtIndex(i: Int) -> CardView {
-		return subviews[i] as CardView
+		return subviews[i] as! CardView
 	}
 	
 	func cardTapped(sender: CardView) {

@@ -90,7 +90,7 @@ class ComputerPlayer: Player {
 	
 	private func logStrategy(msg: String) {
 		if willLogStrategy {
-			println(msg)
+			print(msg)
 		}
 	}
 	

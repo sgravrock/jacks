@@ -1,6 +1,6 @@
 import UIKit
 
-enum Suit: Printable {
+enum Suit: CustomStringConvertible {
 	case Clubs, Hearts, Spades, Diamonds
 	
 	var description : String {
@@ -13,7 +13,7 @@ enum Suit: Printable {
 	}
 }
 
-enum CardValue: Int, Printable {
+enum CardValue: Int, CustomStringConvertible {
 	case Ace = 1,
 	Two = 2, Three = 3, Four = 4, Five = 5, Six = 6, Seven = 7, Eight = 8, Nine = 9, Ten = 10,
 	Jack = 11, Queen = 12, King = 13
@@ -28,12 +28,12 @@ enum CardValue: Int, Printable {
 		} else if self == King {
 			return "K"
 		} else {
-			return "\(toRaw())"
+			return "\(rawValue)"
 		}
 	}
 }
 
-struct Card: Printable, Equatable {
+struct Card: CustomStringConvertible, Equatable {
 	let suit: Suit
 	let value: CardValue
 	
@@ -44,7 +44,7 @@ struct Card: Printable, Equatable {
 		case CardValue.Queen, CardValue.King:
 			return 10
 		default:
-			return value.toRaw()
+			return value.rawValue
 		}
 	}
 	

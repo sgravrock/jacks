@@ -12,6 +12,6 @@ class GameStartViewController: UIViewController {
     }
 
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-		(segue.destinationViewController as TurnStartViewController).game = game
+		(segue.destinationViewController as! TurnStartViewController).game = game
 	}
 }

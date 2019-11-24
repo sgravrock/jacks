@@ -6,7 +6,7 @@ class PlayerTests: XCTestCase {
 		let target = Player(name: "test player")
 		
 		for i in 0...3 {
-			target.hand.append(Card(suit: Suit.Clubs, value: CardValue.fromRaw(i + 1)!))
+			target.hand.append(Card(suit: Suit.Clubs, value: CardValue(rawValue: i + 1)!))
 		}
 		
 		XCTAssertEqual(target.score(), 1 + 2 + 3 + 4, "Wrong score")
@@ -16,7 +16,7 @@ class PlayerTests: XCTestCase {
 		let target = Player(name: "test player")
 		
 		for i in 0...2 {
-			target.hand.append(Card(suit: Suit.Clubs, value: CardValue.fromRaw(i + 1)!))
+			target.hand.append(Card(suit: Suit.Clubs, value: CardValue(rawValue: i + 1)!))
 		}
 		
 		target.hand.append(Card(suit: Suit.Clubs, value: CardValue.Jack))

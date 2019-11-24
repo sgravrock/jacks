@@ -5,7 +5,7 @@ protocol GameDelegate: ComputerPlayerDelegate {
 }
 
 class Game: NSObject, ComputerPlayerDelegate {
-	let players = [Player]()
+	var players = [Player]()
 	let userPlayer = Player(name: "User")
 	weak var delegate: GameDelegate?
 	private var deck: Deck
@@ -106,12 +106,12 @@ class Game: NSObject, ComputerPlayerDelegate {
 	}
 	
 	func breakTieByHighestJack(candidates: [Player]) -> Player {
-		var suitsByRank = [Suit.Diamonds, Suit.Clubs, Suit.Hearts, Suit.Spades]
+		let suitsByRank = [Suit.Diamonds, Suit.Clubs, Suit.Hearts, Suit.Spades]
 		var ranked = findByHighestScore(candidates, computeScore: { (p) -> Int in
 			var score = -1
 			for c in p.hand {
 				if c.value == CardValue.Jack {
-					score = max(score, find(suitsByRank, c.suit)!)
+					score = max(score, suitsByRank.indexOf(c.suit)!)
 				}
 			}
 			return score

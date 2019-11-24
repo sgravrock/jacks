@@ -6,7 +6,7 @@ class Deck: NSObject {
 	override init() {
 		for suit in [Suit.Clubs, Suit.Hearts, Suit.Spades, Suit.Diamonds] {
 			for value in 1...13 {
-				cards.append(Card(suit: suit, value: CardValue.fromRaw(value)!))
+				cards.append(Card(suit: suit, value: CardValue(rawValue: value)!))
 			}
 		}
 	}
@@ -22,7 +22,7 @@ class Deck: NSObject {
 	func shuffle() {
 		// Fisher-Yates shuffle
 		for var i = cards.count - 1; i > 0; i-- {
-			let j = Int(arc4random_uniform(i + 1))
+			let j = Int(arc4random_uniform(UInt32(i) + UInt32(1)))
 			let tmp = cards[i]
 			cards[i] = cards[j]
 			cards[j] = tmp

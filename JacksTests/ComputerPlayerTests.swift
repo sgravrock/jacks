@@ -52,7 +52,7 @@ class ComputerPlayerTests: XCTestCase, ComputerPlayerDelegate {
 		deck.cards.append(Card(suit: Suit.Clubs, value: CardValue.Six))
 		target.takeTurn(game)
 		XCTAssertTrue(lastMove != nil, "lastMove wasn't set")
-		let values = target.hand.map({ $0.value.toRaw() })
+		let values = target.hand.map({ $0.value.rawValue })
 		XCTAssertEqual(values, [5, 6, 1, 1], "Some cards were replaced")
 	}
 	
@@ -93,7 +93,7 @@ class ComputerPlayerTests: XCTestCase, ComputerPlayerDelegate {
 	
 	func makePlayer(cardValues: [Int]) -> ComputerPlayer {
 		let p = ComputerPlayer(name: "test player")
-		p.hand = cardValues.map({Card(suit: Suit.Clubs, value: CardValue.fromRaw($0)!)})
+		p.hand = cardValues.map({Card(suit: Suit.Clubs, value: CardValue(rawValue: $0)!)})
 		p.delegate = self
 		return p
 	}
