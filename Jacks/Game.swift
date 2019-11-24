@@ -107,11 +107,11 @@ class Game: NSObject, ComputerPlayerDelegate {
 	
 	func breakTieByHighestJack(_ candidates: [Player]) -> Player {
 		let suitsByRank = [Suit.diamonds, Suit.clubs, Suit.hearts, Suit.spades]
-		var ranked = findByHighestScore(candidates, computeScore: { (p) -> Int in
+		let ranked = findByHighestScore(candidates, computeScore: { (p) -> Int in
 			var score = -1
 			for c in p.hand {
 				if c.value == CardValue.jack {
-					score = max(score, suitsByRank.index(of: c.suit)!)
+					score = max(score, suitsByRank.firstIndex(of: c.suit)!)
 				}
 			}
 			return score
