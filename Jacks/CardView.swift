@@ -50,7 +50,7 @@ class CardView: UIControl {
 		label.text = "\(card.value)\n\(card.suit)"
 
 		UIView.transition(from: backView, to: label, duration: 0.5,
-			options: UIViewAnimationOptions.transitionFlipFromLeft) { (completed) -> Void in
+			options: UIView.AnimationOptions.transitionFlipFromLeft) { (completed) -> Void in
 				completion()
 		}
 	}
@@ -58,7 +58,7 @@ class CardView: UIControl {
 	func showBackAnimated(_ completion:  @escaping (() -> Void)) {
 		backView.backgroundColor = UIColor.lightGray
 		UIView.transition(from: label, to: backView, duration: 0.5,
-			options: UIViewAnimationOptions.transitionFlipFromLeft) { (completed) -> Void in
+			options: UIView.AnimationOptions.transitionFlipFromLeft) { (completed) -> Void in
 				completion()
 		}
 	}
@@ -72,8 +72,8 @@ class CardView: UIControl {
 		return clone
 	}
 	
-	func subviewTapped() {
-		sendActions(for: UIControlEvents.touchUpInside)
+	@objc func subviewTapped() {
+		sendActions(for: UIControl.Event.touchUpInside)
 	}
 	
 	fileprivate func showSubview(_ subview: UIView) {
@@ -92,7 +92,7 @@ class CardView: UIControl {
 		label.textAlignment = NSTextAlignment.center
 		label.numberOfLines = 2
 		label.backgroundColor = UIColor.white
-		backView.addTarget(self, action: #selector(CardView.subviewTapped), for: UIControlEvents.touchUpInside)
+		backView.addTarget(self, action: #selector(CardView.subviewTapped), for: UIControl.Event.touchUpInside)
 		showBack()
 	}
 }

@@ -22,7 +22,7 @@ class HandView: UIView {
 		
 		for i in 0..<4 {
 			let cv = CardView(frame: CGRect.zero)
-			cv.addTarget(self, action: #selector(HandView.cardTapped(_:)), for: UIControlEvents.touchUpInside)
+			cv.addTarget(self, action: #selector(HandView.cardTapped(_:)), for: UIControl.Event.touchUpInside)
 			addSubview(cv) // will be laid out later
 		}
 	}
@@ -60,7 +60,7 @@ class HandView: UIView {
 		return subviews[i] as! CardView
 	}
 	
-	func cardTapped(_ sender: CardView) {
+	@objc func cardTapped(_ sender: CardView) {
 		for i in 0..<4 {
 			if subviews[i] === sender {
 				delegate?.handView(self, selectedPosition: i)
